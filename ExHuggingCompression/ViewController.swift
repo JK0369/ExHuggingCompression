@@ -32,20 +32,14 @@ class ViewController: UIViewController {
     let label = UILabel()
     label.text = " (label2) "
     label.translatesAutoresizingMaskIntoConstraints = false
+    label.setContentCompressionResistancePriority(.required, for: .horizontal)
     return label
-  }()
-  private let sampleButton: UIButton = {
-    let button = UIButton()
-    button.setTitle(" (button) ", for: .normal)
-    button.setTitleColor(.systemBlue, for: .normal)
-    button.setTitleColor(.blue, for: .highlighted)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    return button
   }()
   private let sample3Label: UILabel = {
     let label = UILabel()
     label.text = " (label3) "
     label.translatesAutoresizingMaskIntoConstraints = false
+    label.setContentCompressionResistancePriority(.required, for: .horizontal)
     return label
   }()
   
@@ -56,7 +50,6 @@ class ViewController: UIViewController {
     self.view.addSubview(self.sampleView)
     self.view.addSubview(self.sampleLabel)
     self.view.addSubview(self.sample2Label)
-    self.view.addSubview(self.sampleButton)
     self.view.addSubview(self.sample3Label)
     
     NSLayoutConstraint.activate([
@@ -82,12 +75,7 @@ class ViewController: UIViewController {
       self.sample2Label.topAnchor.constraint(equalTo: self.containerView.topAnchor),
     ])
     NSLayoutConstraint.activate([
-      self.sampleButton.leftAnchor.constraint(equalTo: self.sample2Label.rightAnchor),
-      self.sampleButton.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
-      self.sampleButton.topAnchor.constraint(equalTo: self.containerView.topAnchor),
-    ])
-    NSLayoutConstraint.activate([
-      self.sample3Label.leftAnchor.constraint(equalTo: self.sampleButton.rightAnchor),
+      self.sample3Label.leftAnchor.constraint(equalTo: self.sample2Label.rightAnchor),
       self.sample3Label.rightAnchor.constraint(equalTo: self.containerView.rightAnchor),
       self.sample3Label.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
       self.sample3Label.topAnchor.constraint(equalTo: self.containerView.topAnchor),
@@ -98,13 +86,11 @@ class ViewController: UIViewController {
     print(self.sampleView.contentHuggingPriority(for: .horizontal))
     print(self.sampleLabel.contentHuggingPriority(for: .horizontal))
     print(self.sample2Label.contentHuggingPriority(for: .horizontal))
-    print(self.sampleButton.contentHuggingPriority(for: .horizontal))
 
     // vertical 모두 UILayoutPriority(rawValue: 750.0)
     print(self.containerView.contentCompressionResistancePriority(for: .vertical))
     print(self.sampleView.contentCompressionResistancePriority(for: .vertical))
     print(self.sampleLabel.contentCompressionResistancePriority(for: .vertical))
     print(self.sample2Label.contentCompressionResistancePriority(for: .vertical))
-    print(self.sampleButton.contentCompressionResistancePriority(for: .vertical))
   }
 }
